@@ -1,0 +1,24 @@
+{
+  "name": "zerocraftr-edge-agent",
+  "version": "1.0.0",
+  "description": "ZeroCraftr Edge Agent for manufacturing telemetry",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2"
+  },
+  "keywords": ["iot", "telemetry", "manufacturing", "edge"],
+  "author": "ZeroCraftr",
+  "license": "MIT"
+}
