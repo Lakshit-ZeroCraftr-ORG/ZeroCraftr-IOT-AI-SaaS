@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -7,6 +8,9 @@ export default function HomePage() {
     <div className="min-h-screen bg-gradient-to-br from-teal-50 to-cyan-50">
       <div className="container mx-auto px-4 py-16">
         <div className="text-center mb-16">
+          <div className="flex justify-center mb-6">
+            <Image src="/logo.png" alt="ZeroCraftr Logo" width={120} height={120} className="w-30 h-30" />
+          </div>
           <h1 className="text-4xl font-bold text-teal-800 mb-4">ZeroCraftr V0</h1>
           <p className="text-xl text-teal-600 mb-8">Manufacturing Telemetry & Analytics Platform</p>
           <div className="flex gap-4 justify-center">

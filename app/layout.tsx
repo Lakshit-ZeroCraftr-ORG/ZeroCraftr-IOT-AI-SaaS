@@ -10,6 +10,11 @@ export const metadata: Metadata = {
   title: "ZeroCraftr V0 - Manufacturing Telemetry Platform",
   description: "Real-time manufacturing telemetry, energy monitoring, and sustainability analytics",
   generator: "v0.app",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/logo.png",
+  },
 }
 
 export default function RootLayout({
