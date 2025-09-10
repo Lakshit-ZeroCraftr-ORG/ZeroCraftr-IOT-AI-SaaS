@@ -16,7 +16,7 @@ export default function Chatbot() {
 
   const sendMessage = async () => {
     if (!input.trim()) return;
-    const userMsg = { sender: 'user', text: input };
+    const userMsg: Message = { sender: 'user', text: input };
     setMessages(msgs => [...msgs, userMsg]);
     setInput('');
 

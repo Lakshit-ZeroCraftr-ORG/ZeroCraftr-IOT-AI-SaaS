@@ -10,102 +10,16 @@ A Next.js + TypeScript web application for secure manufacturing telemetry ingest
 - 🌱 **Sustainability Metrics** - Energy, emissions, and waste tracking
 - 🚀 **Edge Agent** - TypeScript device simulator and edge agent
 
-## Quick Start
 
-### Prerequisites
-
-- Node.js 18+ and pnpm (or npm)
-- Optional: Upstash Redis for production queue
-
-### Local Development
-
-1. **Clone and install dependencies:**
-\`\`\`bash
-git clone <repository-url>
-cd zerocraftr-v0
-pnpm install
-\`\`\`
-
-2. **Set up environment variables:**
-\`\`\`bash
-cp .env.example .env.local
-\`\`\`
-
-Required environment variables:
-\`\`\`env
-# Organization API key (development)
-ORG_API_KEY=your-secure-org-api-key-here
-
-# Dashboard polling interval (milliseconds)
-NEXT_PUBLIC_POLL_INTERVAL_MS=5000
-NEXT_PUBLIC_API_BASE_URL=http://localhost:3000
-
-# Device pairing secret
-EDGE_PAIRING_SECRET=your-secure-pairing-secret-here
-
-# Optional: Redis for production queue
-UPSTASH_REDIS_REST_URL=
-UPSTASH_REDIS_REST_TOKEN=
-
-# Optional: TimescaleDB for time-series data
-TIMESCALE_WRITE_URL=
-
-# Optional: Error tracking
-SENTRY_DSN=
-\`\`\`
-
-3. **Start the development server:**
-\`\`\`bash
-pnpm dev
-\`\`\`
-
-4. **Open your browser:**
-Navigate to [http://localhost:3000](http://localhost:3000)
-
-### Available Scripts
-
-- `pnpm dev` - Start development server
-- `pnpm build` - Build for production
-- `pnpm start` - Start production server
-- `pnpm lint` - Run ESLint
-- `pnpm test` - Run Jest tests
-- `pnpm test:watch` - Run tests in watch mode
-- `pnpm test:coverage` - Run tests with coverage report
-- `pnpm simulator` - Run device simulator (5 devices, 60s)
-- `pnpm edge-agent` - Run single edge agent
-
-## Device Management
-
-### Creating Devices
-
-1. Navigate to `/devices` in the web interface
-2. Click "Add Device" and fill in device details
-3. Download the generated QR code for device pairing
-4. Use the QR code to configure your edge agent
-
-### Device Pairing Flow
-
-1. **Create Device**: POST `/api/devices` returns `device_id`, `api_key`, and `pairing_token`
-2. **Generate QR Code**: QR contains `device_id` and `pairing_token`
-3. **Edge Agent Pairing**: POST `/api/pair` with token returns `device_api_key`
-4. **Telemetry Transmission**: Use `device_api_key` for HMAC signing
 
 ## API Documentation
 
 ### Telemetry Ingestion
 \`\`\`bash
-POST /api/telemetry
-\`\`\`
-
-**Headers:**
-- `Authorization: Bearer <ORG_API_KEY>`
-- `X-Signature: <HMAC_SHA256_signature>`
 
 **Payload Schema:**
 \`\`\`json
 {
-  "device_id": "device-001",
-  "timestamp": 1704628496789,
   "power_w": 1500,
   "energy_kwh": 2.5,
   "co2_kg": 1.75,
@@ -122,14 +36,6 @@ curl -X POST http://localhost:3000/api/telemetry \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer your-org-api-key" \
   -H "X-Signature: $SIGNATURE" \
-  -d "$PAYLOAD"
-\`\`\`
-
-### Device Management APIs
-
-#### List Devices
-\`\`\`bash
-GET /api/devices
 Authorization: Bearer <ORG_API_KEY>
 \`\`\`
 
