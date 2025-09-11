@@ -9,6 +9,7 @@ const navigation = [
   { name: "Energy", href: "/energy", icon: Zap },
   { name: "Emissions", href: "/emissions", icon: Leaf },
   { name: "Waste", href: "/waste", icon: Trash2 },
+  { name: "Chatbot", href: "/chatbot", icon: Cpu },
   { name: "Settings", href: "/settings", icon: Settings },
 ]
 
